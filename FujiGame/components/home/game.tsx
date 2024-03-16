@@ -2,6 +2,8 @@
 import { Unity, useUnityContext } from "react-unity-webgl";
 import { useFullScreenHandle } from "react-full-screen";
 import { useState, useEffect, useCallback} from 'react';
+import { Suspense } from "react";
+import Card from "@/components/home/card";
 
 export default function Game({uploadScore} : any) {
 
@@ -31,7 +33,9 @@ export default function Game({uploadScore} : any) {
 
     return (
         <>
-        <Unity className="w-4/5 mr-auto ml-auto mb-20 rounded-[20px]" unityProvider={unityProvider} />
+        <Suspense fallback={<Card title="Chargement" description="Chargement du jeu"/>}>
+            <Unity className="w-4/5 mr-auto ml-auto mb-20 rounded-[20px]" unityProvider={unityProvider} />
+        </Suspense>
         </>
     );
 }

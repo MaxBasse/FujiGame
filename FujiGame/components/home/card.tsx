@@ -9,7 +9,7 @@ export default function Card({
 }: {
   title: string;
   description: string;
-  demo: ReactNode;
+  demo?: ReactNode;
   large?: boolean;
 }) {
   return (
