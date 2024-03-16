@@ -35,7 +35,7 @@ export default function Game({uploadScore} : any) {
 
     return (
         <>
-        {isLoaded ? <><Unity className="w-4/5 mr-auto ml-auto mb-20 rounded-[20px]" unityProvider={unityProvider} /></> : <Card title="Chargement" description="Chargement du jeu"/>}
+        {loadingProgression<100 ? <><Unity className="w-4/5 mr-auto ml-auto mb-20 rounded-[20px]" unityProvider={unityProvider} /></> : <Card title="Chargement" description="Chargement du jeu"/>}
             
         </>
     );

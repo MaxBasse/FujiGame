@@ -48,7 +48,7 @@ export default async function Home(this: any) {
           <p
             className="mt-6 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
             style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}>
-            Évite les obstacles avec ton double saut ou découpe les grâce à ton katana de ninja pour faire le plus gros score possible et tenter de gagner des cadeaux ! <br/> 
+            Évite les obstacles avec ton double saut ou découpe les grâce à ton katana de ninja pour faire le plus gros score possible et tente de gagner des cadeaux ! <br/> 
             (N'hésite pas à passer en mode portrait sur mobile)
           </p>
           <a
