@@ -2,7 +2,7 @@
 import { Unity, useUnityContext } from "react-unity-webgl";
 import { useFullScreenHandle } from "react-full-screen";
 import { useState, useEffect, useCallback} from 'react';
-import ReactMarkdown from "react-markdown";
+import { LoadingDots } from "@/components/shared/icons";
 
 export default function Game({uploadScore} : any) {
 
@@ -35,15 +35,15 @@ export default function Game({uploadScore} : any) {
     return (
         <>
         <div className="grid">   
-            <div className="col-start-1 row-start-1 w-4/5 h-7/10 mr-auto ml-auto mb-20 rounded-xl bg-gradient-to-br from-indigo-100 via-cyan-50 to-teal-100 shadow-md grid">
+            <div className="z-10 grid grid-cols-3 grid-rows-3 col-start-1 row-start-1 w-4/5 h-7/10 mr-auto ml-auto mb-20 rounded-[20px] bg-gradient-to-br from-indigo-100 via-cyan-50 to-teal-100 shadow-md ">
                 
                     
-                        <h1 className="col-start-2 row-start-2 font-display text-transparent text-4xl font-bold bg-gradient-to-br from-red-700 to-red-500 bg-clip-text [text-wrap:balance] overflow-hidden  ">
-                        CHARGEMENT
-                        </h1>
-                        
+                        <div className="scale-120 col-span-3 row-start-2 font-display text-center text-transparent text-2xl font-bold bg-gradient-to-br from-red-700 to-red-500 bg-clip-text [text-wrap:balance] overflow-hidden md:text-4xl ">
+                        CHARGEMENT <br/>
+                        <LoadingDots color="#808080" />
+                        </div>                               
             </div>
-            <Unity className="z-0 col-start-1 row-start-1 w-4/5 mr-auto ml-auto mb-20 rounded-[20px]" unityProvider={unityProvider} />
+            <Unity className="col-start-1 row-start-1 w-4/5 mr-auto ml-auto mb-20 rounded-[20px]" unityProvider={unityProvider} />
         </div>
             
         </>
