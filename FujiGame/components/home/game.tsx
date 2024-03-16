@@ -2,8 +2,7 @@
 import { Unity, useUnityContext } from "react-unity-webgl";
 import { useFullScreenHandle } from "react-full-screen";
 import { useState, useEffect, useCallback} from 'react';
-import { Suspense } from "react";
-import Card from "@/components/home/card";
+import ReactMarkdown from "react-markdown";
 
 export default function Game({uploadScore} : any) {
 
@@ -35,7 +34,17 @@ export default function Game({uploadScore} : any) {
 
     return (
         <>
-        {loadingProgression<100 ? <><Unity className="w-4/5 mr-auto ml-auto mb-20 rounded-[20px]" unityProvider={unityProvider} /></> : <Card title="Chargement" description="Chargement du jeu"/>}
+        <div className="grid">   
+            <div className="col-start-1 row-start-1 w-4/5 h-7/10 mr-auto ml-auto mb-20 rounded-xl bg-gradient-to-br from-indigo-100 via-cyan-50 to-teal-100 shadow-md grid">
+                
+                    
+                        <h1 className="col-start-2 row-start-2 font-display text-transparent text-4xl font-bold bg-gradient-to-br from-red-700 to-red-500 bg-clip-text [text-wrap:balance] overflow-hidden  ">
+                        CHARGEMENT
+                        </h1>
+                        
+            </div>
+            <Unity className="z-0 col-start-1 row-start-1 w-4/5 mr-auto ml-auto mb-20 rounded-[20px]" unityProvider={unityProvider} />
+        </div>
             
         </>
     );
