@@ -7,7 +7,7 @@ export default function Footer() {
         Fait par{" "}
         <a
           className="font-semibold text-gray-600 underline-offset-4 transition-colors hover:underline"
-          href="http://localhost:3000/max.png"
+          href="https://fujigame-ufcdc.ondigitalocean.app/max.png"
           target="_blank"
           rel="noopener noreferrer"
         >

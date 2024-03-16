@@ -56,7 +56,7 @@ export default async function Home() {
         >
           <a
             className="group flex max-w-fit items-center justify-center shadow-md space-x-2 rounded-full border border-blue-900 bg-blue-900 px-5 py-2 text-sm text-white transition-colors hover:bg-white hover:text-green-600 hover:border-gray-500"
-            href="http://localhost:3000/game"
+            href="https://fujigame-ufcdc.ondigitalocean.app/game"
             target="_self"
             rel="noopener noreferrer"
           >
@@ -78,7 +78,7 @@ export default async function Home() {
           </a>
           <a
             className="flex max-w-fit items-center justify-center space-x-2 rounded-full border border-red-600 bg-red-600 px-5 py-2 text-sm text-white shadow-md transition-colors hover:bg-white hover:text-blue-900  hover:border-gray-500"
-            href="http://localhost:3000/"
+            href="https://fujigame-ufcdc.ondigitalocean.app/"
             target="_self"
             rel="noopener noreferrer"
           >
