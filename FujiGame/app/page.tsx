@@ -37,7 +37,7 @@ export default async function Home() {
           href="https://fujilist.odoo.com/"
           target="_blank"
           rel="noreferrer"
-          className="mx-auto text-white mt-5 flex max-w-fit animate-fade-up items-center border border-green-600 justify-center space-x-2 overflow-hidden shadow-md rounded-full bg-green-600 px-7 py-2 transition-colors hover:bg-white hover:text-red-600  hover:border-gray-500"
+          className="mx-auto text-center text-white mt-5 flex max-w-fit animate-fade-up items-center border border-green-600 justify-center space-x-2 overflow-hidden shadow-md rounded-full bg-green-600 px-7 py-2 transition-colors hover:bg-white hover:text-red-600  hover:border-gray-500"
         >
           <p className="text-sm font-semibold">
             Site principal 
@@ -55,7 +55,7 @@ export default async function Home() {
           style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
         >
           <a
-            className="group flex max-w-fit items-center justify-center shadow-md space-x-2 rounded-full border border-blue-900 bg-blue-900 px-5 py-2 text-sm text-white transition-colors hover:bg-white hover:text-green-600 hover:border-gray-500"
+            className="group flex max-w-fit items-center justify-center shadow-md space-x-2 rounded-full border text-center border-blue-900 bg-blue-900 px-5 py-2 text-sm text-white transition-colors hover:bg-white hover:text-green-600 hover:border-gray-500"
             href="https://fujigame-ufcdc.ondigitalocean.app/game"
             target="_self"
             rel="noopener noreferrer"
@@ -77,7 +77,7 @@ export default async function Home() {
             <p>Accéder au jeu</p>
           </a>
           <a
-            className="flex max-w-fit items-center justify-center space-x-2 rounded-full border border-red-600 bg-red-600 px-5 py-2 text-sm text-white shadow-md transition-colors hover:bg-white hover:text-blue-900  hover:border-gray-500"
+            className="flex max-w-fit items-center justify-center space-x-2 rounded-full border text-center border-red-600 bg-red-600 px-5 py-2 text-sm text-white shadow-md transition-colors hover:bg-white hover:text-blue-900  hover:border-gray-500"
             href="https://fujigame-ufcdc.ondigitalocean.app/"
             target="_self"
             rel="noopener noreferrer"
