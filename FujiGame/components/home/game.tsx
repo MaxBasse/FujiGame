@@ -24,6 +24,8 @@ export default function Game({uploadScore} : any) {
         
     }, []);
 
+    
+
     useEffect(() => {
         addEventListener("TransfertScore", handleUnitySendScore);
         return () => {
@@ -33,9 +35,8 @@ export default function Game({uploadScore} : any) {
 
     return (
         <>
-        <Suspense fallback={<Card title="Chargement" description="Chargement du jeu"/>}>
-            <Unity className="w-4/5 mr-auto ml-auto mb-20 rounded-[20px]" unityProvider={unityProvider} />
-        </Suspense>
+        {isLoaded ? <><Unity className="w-4/5 mr-auto ml-auto mb-20 rounded-[20px]" unityProvider={unityProvider} /></> : <Card title="Chargement" description="Chargement du jeu"/>}
+            
         </>
     );
 }
