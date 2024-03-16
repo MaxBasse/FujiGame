@@ -1,7 +1,7 @@
 'use client';
 import { Unity, useUnityContext } from "react-unity-webgl";
-import { FullScreen, useFullScreenHandle } from "react-full-screen";
-import { useState, useEffect, useCallback, Suspense } from 'react';
+import { useFullScreenHandle } from "react-full-screen";
+import { useState, useEffect, useCallback} from 'react';
 
 export default function Game({uploadScore} : any) {
 

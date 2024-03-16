@@ -2,12 +2,8 @@ import Game from "@/components/home/game";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { PrismaClient } from '@prisma/client'
-import { useEffect } from "react";
 
 const prisma = new PrismaClient({})
-
-
-
 
 export default async function Home(this: any) {
   const session = await getServerSession(authOptions);
@@ -33,8 +29,6 @@ export default async function Home(this: any) {
   
   }
 
-  
-
     return (
       <>
         <div className=" z-10 w-full  px-5 xl:px-0">
@@ -52,7 +46,7 @@ export default async function Home(this: any) {
             (N'hésite pas à passer en mode portrait sur mobile)
           </p>
           <a
-            href="http://localhost:3000/"
+            href="https://fujigame-ufcdc.ondigitalocean.app/"
             target="_self"
             rel="noreferrer"
             className="mx-auto text-white mt-5 flex max-w-fit animate-fade-up items-center border border-green-600 justify-center space-x-2 overflow-hidden shadow-md rounded-full bg-green-600 px-7 py-2 transition-colors hover:bg-white hover:text-red-600  hover:border-gray-500"
