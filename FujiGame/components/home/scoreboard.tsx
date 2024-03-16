@@ -4,6 +4,7 @@ import  Card from './card';
 
 export default function Scoreboard({ scores }: { scores: { email: string; score: number; }[] }) {
   
+  
 
 return (
     <Card title='Classement'
@@ -12,7 +13,7 @@ return (
       <List className=" ">
         {scores.map((item) => (
           <ListItem className="first:border-0 border-t" key={item.email}>
-            <span>{item.email}</span>
+            <span>{item.email.split(".")[0].charAt(0).toUpperCase() + item.email.split(".")[0].slice(1) + " " + item.email.split(".")[1].toUpperCase()}</span>
             <span>{item.score}</span>
           </ListItem>
         ))}

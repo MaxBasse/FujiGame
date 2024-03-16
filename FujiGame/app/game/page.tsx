@@ -2,12 +2,31 @@ import Game from "@/components/home/game";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { PrismaClient } from '@prisma/client'
+import { Suspense } from "react";
+import Scoreboard from "@/components/home/scoreboard";
 
 const prisma = new PrismaClient({})
 
 export default async function Home(this: any) {
   const session = await getServerSession(authOptions);
   const { email } = session?.user || {};
+
+  var scores = await prisma.scores.findMany({
+    orderBy: {score: 'desc'},  
+    distinct: ['email'],
+    take: 10
+
+  })
+
+  function disconnect() {
+    prisma.$disconnect().catch(async (e) => {
+      console.error(e)
+      await prisma.$disconnect()
+      process.exit(1)
+    })
+  }
+
+  disconnect();
   
 
     async function uploadScore(score: string) {
@@ -19,21 +38,18 @@ export default async function Home(this: any) {
           score: Number.parseInt(score),
         },
         })
-      
-    
-      prisma.$disconnect().catch(async (e) => {
-      console.error(e)
-      await prisma.$disconnect()
-      process.exit(1)
-      })
+
+        disconnect();
   
   }
 
     return (
       <>
         <div className=" z-10 w-full  px-5 xl:px-0">
-         
-        <Game uploadScore={uploadScore} />
+        <Suspense fallback={<Scoreboard scores={scores} />}>
+          <Game uploadScore={uploadScore} />
+        </Suspense>
+        
           <h1
               className="animate-fade-up bg-gradient-to-br from-blue-700 to-cyan-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"
               style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}>
