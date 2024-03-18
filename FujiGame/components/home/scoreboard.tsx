@@ -2,9 +2,10 @@
 import {List, ListItem } from '@tremor/react';  
 import  Card from './card';
 
+
 export default function Scoreboard({ scores }: { scores: { email: string; score: number; }[] }) {
   
-  
+
 
 return (
     <Card title='Classement'

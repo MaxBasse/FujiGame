@@ -1,16 +1,23 @@
 import { PrismaClient } from '@prisma/client'
 import  Scoreboard  from "@/components/home/scoreboard";
-
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 const prisma = new PrismaClient({})
 
 export default async function Home() {
+  const session = await getServerSession(authOptions);
+
   var scores = await prisma.scores.findMany({
     orderBy: {score: 'desc'},  
     distinct: ['email'],
     take: 10
 
   })
+  
+  scores.includes
+  scores.splice
+  console.log(scores)
 
   function disconnect() {
     prisma.$disconnect().catch(async (e) => {
@@ -20,12 +27,14 @@ export default async function Home() {
     })
   }
  
+  scores.push
+  
 
   disconnect();
 
   return (
     <>
-      <div className=" z-10 w-full max-w-xl px-5 xl:px-0">
+      <div className="z-10 w-full max-w-xl px-5 xl:px-0">
         
         <h1
           className="animate-fade-up bg-gradient-to-br from-blue-700 to-cyan-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"
