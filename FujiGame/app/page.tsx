@@ -59,9 +59,9 @@ export default async function Home() {
   scores.map((item) => {
     let rank = scores.indexOf(item)+1
     if(item.email == session?.user?.email) {
-      item.email = index.length + ". " + item.email
+      item.email = index.length + " (moi)" + ". " + item.email
     } else {
-      item.email = rank + ". " + item.email
+      item.email = rank +  ". " + item.email
       rank++
     }
   })
@@ -98,14 +98,14 @@ export default async function Home() {
           </p>
         </a>
         <p
-          className="mt-6 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
+          className="mt-4 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
           Fait le plus gros score et gagne des lots ! <br />
           Connecte-toi pour sauvegarder ton score et participer.
         </p>
         <div
-          className="mx-auto mt-7 flex animate-fade-up items-center justify-center space-x-5 opacity-0"
+          className="mx-auto mt-4 flex animate-fade-up items-center justify-center space-x-5 opacity-0"
           style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
         >
           <a
@@ -142,7 +142,7 @@ export default async function Home() {
           </a>
         </div>
       </div>
-      <div className="my-8 grid w-full max-w-screen-xl flex-auto animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-1 xl:px-0">
+      <div className="my-4 grid w-full max-w-screen-xl flex-auto animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-1 xl:px-0">
         <Scoreboard scores={scores} />
       </div>
     </>
