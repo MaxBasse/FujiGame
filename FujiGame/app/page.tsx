@@ -58,7 +58,7 @@ export default async function Home() {
 
   scores.map((item) => {
     let rank = scores.indexOf(item)+1
-    if(item.email == session?.user?.email) {
+    if(rank == 11) {
       item.email = index.length + " (moi)" + ". " + item.email
     } else {
       item.email = rank +  ". " + item.email
