@@ -7,17 +7,64 @@ const prisma = new PrismaClient({})
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
+  const isLogged = session?.user?.email !== undefined && session?.user?.email !== null;
 
-  var scores = await prisma.scores.findMany({
+  const scores = await prisma.scores.findMany({
     orderBy: {score: 'desc'},  
     distinct: ['email'],
     take: 10
+    
 
   })
+  var userScore
+  var index: number | { score: number; email: number; }
+
+  if(!(session?.user?.email == undefined || session?.user?.email == null)) {
+
+    userScore = await prisma.scores.aggregate({
+      _max: {
+        score: true,
+      },
+      where:{
+        email: session?.user?.email,
+      },
+    })
+    
+    if(userScore._max.score == null || userScore._max.score == undefined) {
+      userScore._max.score = 0
+    }
+
+    index = await prisma.scores.count({
+      select: {
+        score: true,
+        email: true,
+      },
+      where: {
+        score: {
+          gt: userScore._max.score,
+        },
+      },
+      orderBy: {score: 'desc'},
+      distinct: ['email'],
+    })
+
+    scores.push({
+      email: session?.user?.email,
+      score: userScore._max.score,
+    })
+
+  }
+
+  scores.map((item) => {
+    let rank = scores.indexOf(item)+1
+    if(item.email == session?.user?.email) {
+      item.email = index + ". " + item.email
+    } else {
+      item.email = rank + ". " + item.email
+      rank++
+    }
+  })
   
-  scores.includes
-  scores.splice
-  console.log(scores)
 
   function disconnect() {
     prisma.$disconnect().catch(async (e) => {
@@ -27,9 +74,6 @@ export default async function Home() {
     })
   }
  
-  scores.push
-  
-
   disconnect();
 
   return (
