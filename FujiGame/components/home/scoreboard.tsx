@@ -18,7 +18,7 @@ return (
     demo={
       <List className=" ">
         {scores.map((item) => (
-          <ListItem className="first:border-0 border-t" key={item.email}>
+          <ListItem className="first:border-0 border-t odd:last:rounded-xl  odd:last:border-2 odd:last:pl-5 odd:last:pr-5 odd:last:bg-gradient-to-br from-orange-500 to-yellow-400" key={item.email}>
             <span>{item.email.split(".")[0] + " "+ item.email.split(".")[1].charAt(1).toUpperCase() + item.email.split(".")[1].slice(2) + " " + item.email.split(".")[2].toUpperCase().split("@")[0]}</span>
             <span>{item.score}</span>
           </ListItem>
