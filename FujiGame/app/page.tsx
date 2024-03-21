@@ -101,7 +101,12 @@ export default async function Home() {
           className="mt-4 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
-          Fait le plus gros score et gagne des lots ! <br />
+          Fait le plus gros score et gagne des lots ! 
+        </p>
+        <p
+          className="animate-fade-up text-center font-extrabold text-stone-700 opacity-0 [text-wrap:balance] md:text-xl"
+          style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
+        >
           Connecte-toi pour sauvegarder ton score et participer.
         </p>
         <div

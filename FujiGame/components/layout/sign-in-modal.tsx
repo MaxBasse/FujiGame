@@ -56,8 +56,16 @@ const SignInModal = ({
               <LoadingDots color="#808080" />
             ) : (
               <>
-                <Google className="h-5 w-5" />
-                <p>Se connecter avec Google</p>
+                
+                <Image
+                  src="/logo.png"
+                  alt="Logo"
+                  className="h-5 w-9 "
+                  width={20}
+                  height={20}
+                  
+                />
+                <p>Se connecter avec ICAM</p>
               </>
             )}
           </button>
