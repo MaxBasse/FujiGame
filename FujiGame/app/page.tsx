@@ -17,7 +17,7 @@ export default async function Home() {
 
   })
   var userScore
-  var index: number | { score: number; email: number; }
+  var index
 
   if(!(session?.user?.email == undefined || session?.user?.email == null)) {
 
@@ -34,20 +34,21 @@ export default async function Home() {
       userScore._max.score = 0
     }
 
-    index = await prisma.scores.count({
+    index = await prisma.scores.findMany({
       select: {
         score: true,
         email: true,
       },
       where: {
         score: {
-          gt: userScore._max.score,
+          gte: userScore._max.score,
         },
       },
       orderBy: {score: 'desc'},
       distinct: ['email'],
     })
-
+    
+    
     scores.push({
       email: session?.user?.email,
       score: userScore._max.score,
@@ -58,7 +59,7 @@ export default async function Home() {
   scores.map((item) => {
     let rank = scores.indexOf(item)+1
     if(item.email == session?.user?.email) {
-      item.email = index + ". " + item.email
+      item.email = index.length; + ". " + item.email
     } else {
       item.email = rank + ". " + item.email
       rank++
