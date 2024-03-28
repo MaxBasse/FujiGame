@@ -16,8 +16,21 @@ export default async function Home() {
     
 
   })
+
+  const nbGames = (await prisma.scores.count()).toString()
+  const nbUsers = await prisma.scores.findMany({
+    distinct: ['email'],
+  })
+
+  const avgScore = await prisma.scores.aggregate({
+    _avg: {
+      score: true,
+    },
+  })
+  
   var userScore
   var index
+  
 
   if(!(session?.user?.email == undefined || session?.user?.email == null)) {
 
@@ -150,6 +163,32 @@ export default async function Home() {
       <div className="my-4 grid w-full max-w-screen-xl flex-auto animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-1 xl:px-0">
         <Scoreboard scores={scores} />
       </div>
+
+      <p
+          className="mt-2 mb-5 animate-fade-up text-left text-gray-500 opacity-0  md:text-xl"
+          style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
+        >
+          <text className='font-bold'>STATISTIQUES</text>
+        </p>
+
+      <p
+          className="mt-2 mb-5 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
+          style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
+        >
+          <text className='font-semibold text-gray-600'>{nbGames} </text> parties jouées 
+        </p>
+      <p
+        className="mt-2 mb-5 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
+        style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
+      >
+        <text className='font-semibold text-gray-600'>{nbUsers.length} </text> joueurs classés 
+      </p>
+      <p
+        className="mt-2 mb-5 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
+        style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
+      >
+        Score moyen : <text className='font-semibold text-gray-600'>{avgScore._avg.score?.toFixed()} </text> pts
+      </p>
     </>
   );
 }
