@@ -2,8 +2,7 @@ import Game from "@/components/home/game";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { PrismaClient } from '@prisma/client'
-import { Suspense } from "react";
-import Scoreboard from "@/components/home/scoreboard";
+
 
 const prisma = new PrismaClient({})
 
