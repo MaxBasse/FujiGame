@@ -35,7 +35,7 @@ export default function Game({uploadScore} : any) {
     return (
         <>
         <div className="grid">   
-            <div className="grid grid-cols-3 grid-rows-3 col-start-1 row-start-1 w-4/5 h-7/10 mr-auto ml-auto mb-20 rounded-[20px] bg-gradient-to-br from-indigo-100 via-cyan-50 to-teal-100 shadow-md ">
+            <div className="grid grid-cols-3 grid-rows-3 col-start-1 row-start-1 w-4/5 h-7/10 mr-auto ml-auto mb-20 rounded-[20px] bg-gradient-to-br from-indigo-100 via-cyan-50 to-teal-100 shadow-md portrait:h-3/6">
                 
                     
                         <div className="scale-120 col-span-3 row-start-2 font-display text-center text-transparent text-2xl font-bold bg-gradient-to-br from-red-700 to-red-500 bg-clip-text [text-wrap:balance] overflow-hidden md:text-xl ">
@@ -43,7 +43,7 @@ export default function Game({uploadScore} : any) {
                         <LoadingDots color="#808080" />
                         </div>                               
             </div>
-            <Unity className="z-10 col-start-1 row-start-1 w-4/5 mr-auto ml-auto mb-20 rounded-[20px]" unityProvider={unityProvider} />
+            <Unity className="z-10 col-start-1 row-start-1 w-4/5 mr-auto ml-auto mb-20 rounded-[20px] portrait:ml-0 portrait:mr-0 portrait:w-full" unityProvider={unityProvider} />
         </div>
             
         </>
