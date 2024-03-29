@@ -14,8 +14,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ account, profile }) {
       if (account?.provider === "google") {
-        return true
-        //return  (profile?.email?.endsWith("icam.fr") || profile?.email?.endsWith("maxent.brunel@gmail.com")) ? true : "/error";
+        return  (profile?.email?.endsWith("icam.fr") || profile?.email?.endsWith("maxent.brunel@gmail.com")) ? true : "/error";
       }
       
       return "/error"
