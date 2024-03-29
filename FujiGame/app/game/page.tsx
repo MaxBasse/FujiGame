@@ -38,7 +38,13 @@ export default async function Home(this: any) {
     return (
       <>
         <div className=" z-10 w-full  px-5 xl:px-0">
-          <Game uploadScore={uploadScore} />        
+          <Game uploadScore={uploadScore} />  
+          <p
+            className="mb-4 animate-fade-up text-center text-gray-700 font-bold opacity-0 [text-wrap:balance] md:text-xl"
+            style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}>
+            PASSE EN PORTRAIT SUR MOBILE
+            
+          </p>     
           <h1
               className="animate-fade-up bg-gradient-to-br from-blue-700 to-cyan-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm [text-wrap:balance] md:text-7xl md:leading-[5rem]"
               style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}>
@@ -47,8 +53,8 @@ export default async function Home(this: any) {
           <p
             className="mt-6 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
             style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}>
-            Évite les obstacles avec ton double saut ou découpe les grâce à ton katana de ninja pour faire le plus gros score possible et tente de gagner des cadeaux ! <br/> 
-            (N'hésite pas à passer en mode portrait sur mobile)
+            Évite les obstacles avec ton double saut ou découpe les grâce à ton katana de ninja pour faire le plus gros score possible et tente de gagner des cadeaux ! 
+            
           </p>
           <a
             href="https://fujigame-ufcdc.ondigitalocean.app/"
