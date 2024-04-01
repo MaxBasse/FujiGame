@@ -8,6 +8,11 @@ const prisma = new PrismaClient({})
 export default async function Home() {
   const session = await getServerSession(authOptions);
   const isLogged = session?.user?.email !== undefined && session?.user?.email !== null;
+  const date = new Date();
+  const closingDate = new Date("2024-04-01T12:15:00Z");
+  var hide = true;
+
+  if((session?.user?.email?.endsWith("maxent.brunel@gmail.com") || session?.user?.email?.endsWith("eliot.maignan@2027.icam.fr")) || date.getTime() < closingDate.getTime()) hide = false;
 
   const scores = await prisma.scores.findMany({
     orderBy: {score: 'desc'},  
@@ -113,7 +118,7 @@ export default async function Home() {
           className="mt-4 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
-          Fait le plus gros score et gagne des lots ! 
+          Fait le plus gros score et gagne des lots (PS5, airpods...) 
         </p>
         <p
           className="animate-fade-up text-center font-extrabold text-stone-700 opacity-0 [text-wrap:balance] md:text-xl"
@@ -159,8 +164,8 @@ export default async function Home() {
           </a>
         </div>
       </div>
-      <div className="my-4 grid w-full max-w-screen-xl flex-auto animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-1 xl:px-0">
-        <Scoreboard scores={scores} />
+      <div className="my-4 w-full max-w-screen-xl animate-fade-up grid-cols-1 gap-5 px-5 md:grid-cols-1 xl:px-0">
+        <Scoreboard scores={scores} hide={hide}/>
       </div>
 
       <p

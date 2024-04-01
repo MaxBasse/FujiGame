@@ -3,14 +3,16 @@ import {List, ListItem } from '@tremor/react';
 import  Card from './card';
 
 
-export default function Scoreboard({ scores }: { scores: { email: string; score: number; }[] }) {
-  
-  /*{scores.map((item) => (
-    <ListItem className="first:border-0 border-t" key={item.email}>
-      <span>{item.email.split(".")[0].charAt(0).toUpperCase() + item.email.split(".")[0].slice(1) + " " + item.email.split(".")[1].toUpperCase().split("@")[0]}</span>
-      <span>{item.score}</span>
-    </ListItem>
-  ))}*/
+export default function Scoreboard({ scores, hide }: { scores: { email: string; score: number; }[], hide : boolean }) {
+
+  if(hide) return (
+    <Card title='Classement désactivé pendant la dernière heure'
+    description="Plus qu'une heure pour tenter de faire le meilleur score, le classement est désactivé pour plus de suspens !"
+    
+    large={true}
+    /> 
+
+  );
 
 return (
     <Card title='Classement'
