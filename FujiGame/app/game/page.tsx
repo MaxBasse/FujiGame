@@ -42,7 +42,7 @@ export default async function Home(this: any) {
           <p
             className="mb-4 animate-fade-up text-center text-gray-700 font-bold opacity-0 [text-wrap:balance] md:text-xl"
             style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}>
-            PASSE EN PORTRAIT SUR MOBILE
+            PASSE EN PAYSAGE SUR MOBILE
             
           </p>     
           <h1
