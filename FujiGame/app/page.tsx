@@ -203,7 +203,7 @@ export default async function Home() {
           className="mt-2 mb-5 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
-          Tu as joué <text className='font-semibold text-gray-600'>{nbGames} </text> parties
+          Tu as joué <text className='font-semibold text-gray-600'>{nbGamesByUser} </text> parties
         </p>
       
       <p
@@ -216,7 +216,14 @@ export default async function Home() {
         className="mt-2 mb-5 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
         style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
       >
-        Score moyen : <text className='font-semibold text-gray-600'>{avgScore._avg.score?.toFixed()} </text> pts
+        Score moyen général : <text className='font-semibold text-gray-600'>{avgScore._avg.score?.toFixed()} </text> pts
+      </p>
+
+      <p
+        className="mt-2 mb-5 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
+        style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
+      >
+        Ton score moyen : <text className='font-semibold text-gray-600'>{avgScoreByUser} </text> pts
       </p>
     </>
   );
