@@ -22,6 +22,8 @@ export default async function Home() {
 
   })
 
+  var nbGamesByUser = "Connecte toi pour accéder à tes statistiques"
+  var avgScoreByUser = "Connecte toi pour accéder à tes statistiques"
   const nbGames = (await prisma.scores.count()).toString()
   const nbUsers = await prisma.scores.findMany({
     distinct: ['email'],
@@ -48,6 +50,21 @@ export default async function Home() {
       },
     })
     
+    nbGamesByUser = (await prisma.scores.count({
+      where: {
+        email: session?.user?.email,
+      },
+    })).toString()
+
+    avgScoreByUser = (await prisma.scores.aggregate({
+      _avg: {
+        score: true,
+      },
+      where: {
+        email: session?.user?.email,
+      },
+    }))._avg.score?.toFixed() ?? 'Joue au moins une partie pour voir ton score moyen';
+      
     if(userScore._max.score == null || userScore._max.score == undefined) {
       userScore._max.score = 0
     }
@@ -179,8 +196,16 @@ export default async function Home() {
           className="mt-2 mb-5 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
           style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
         >
-          <text className='font-semibold text-gray-600'>{nbGames} </text> parties jouées 
+          <text className='font-semibold text-gray-600'>{nbGames} </text> parties jouées au total
         </p>
+
+      <p
+          className="mt-2 mb-5 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
+          style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
+        >
+          Tu as joué <text className='font-semibold text-gray-600'>{nbGames} </text> parties
+        </p>
+      
       <p
         className="mt-2 mb-5 animate-fade-up text-center text-gray-500 opacity-0 [text-wrap:balance] md:text-xl"
         style={{ animationDelay: "0.25s", animationFillMode: "forwards" }}
