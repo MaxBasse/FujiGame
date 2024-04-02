@@ -21,19 +21,23 @@ export default async function Home(this: any) {
   disconnect();
   
 
-    async function uploadScore(score: string) {
-      "use server";
-      console.log("Score uploaded") 
-      if(email == undefined || email == null) return
-      if(!email.endsWith("icam.fr")) return
-      console.log("Score uploaded")
+    async function uploadScore(score: string, modCrc : string) {
+      "use server"
+      console.log("email: " + email) 
+      console.log("score: " + score) 
+      console.log("Score uploaded1") 
+      const validScore = Number.parseInt(score)%97==Number.parseInt(modCrc)
+
+      if(email == undefined || email == null || !validScore) return
+      
+      console.log("Score uploaded2")
       await prisma.scores.create({
         data: {
           email: email,
           score: Number.parseInt(score),
         },
         })
-        console.log("Score uploaded")
+        console.log("Score uploaded3")
 
         disconnect();
   

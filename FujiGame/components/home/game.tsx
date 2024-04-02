@@ -17,9 +17,8 @@ export default function Game({uploadScore} : any    ) {
     });
     const handleUnitySendScore = useCallback((score : any) => { 
         setReceived(score);
-        console.log("Score uploaded")
-        uploadScore(score);
-        console.log("Score uploaded")
+        uploadScore(score, score%97);
+      
     }, []);
 
     
