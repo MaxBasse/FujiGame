@@ -4,7 +4,7 @@ import { useFullScreenHandle } from "react-full-screen";
 import { useState, useEffect, useCallback} from 'react';
 import { LoadingDots } from "@/components/shared/icons";
 
-export default function Game({uploadScore} : any) {
+export default function Game({uploadScore} : any    ) {
 
     const [received, setReceived] = useState(0);
     const [scores, setScores] = useState([[""],[""]]);
@@ -17,10 +17,9 @@ export default function Game({uploadScore} : any) {
     });
     const handleUnitySendScore = useCallback((score : any) => { 
         setReceived(score);
+        console.log("Score uploaded")
         uploadScore(score);
-
-
-        
+        console.log("Score uploaded")
     }, []);
 
     

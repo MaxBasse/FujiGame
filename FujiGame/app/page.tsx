@@ -11,6 +11,7 @@ export default async function Home() {
   const date = new Date();
   const closingDate = new Date("2024-04-03T16:30:00Z");
   var hide = true;
+  
 
   if((session?.user?.email?.endsWith("maxent.brunel@gmail.com") || session?.user?.email?.endsWith("eliot.maignan@2027.icam.fr")) || date.getTime() < closingDate.getTime()) hide = false;
 
