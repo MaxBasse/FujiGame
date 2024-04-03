@@ -29,9 +29,9 @@ export default async function Home(this: any) {
       console.log("email: " + email) 
       console.log("score: " + score) 
       console.log("Score uploaded1") 
-      const validScore = Number.parseInt(score)%227==Number.parseInt(modCrc)
+      const validScore = Number.parseInt(score)%1325==Number.parseInt(modCrc)
       
-      console.log("score : " + score +" test : " + modCrc + " calc : " + Number.parseInt(score)%227)
+      
       if(email == undefined || email == null) return
       if(date.getTime() >= closingDate.getTime()) return
 
