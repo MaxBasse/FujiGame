@@ -9,8 +9,7 @@ const prisma = new PrismaClient({})
 export default async function Home(this: any) {
   const session = await getServerSession(authOptions);
   const { email } = session?.user || {};
-  const closingDate = new Date("2024-04-03T17:00:00Z");
-  const date = new Date();
+  
 
   function disconnect() {
     prisma.$disconnect().catch(async (e) => {
@@ -25,6 +24,8 @@ export default async function Home(this: any) {
 
     async function uploadScore(score: string, modCrc : string) {
       "use server"
+      const closingDate = new Date("2024-04-03T17:00:00Z");
+      const date = new Date();
       console.log("email: " + email) 
       console.log("score: " + score) 
       console.log("Score uploaded1") 
