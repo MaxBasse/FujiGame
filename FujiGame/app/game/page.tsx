@@ -29,7 +29,7 @@ export default async function Home(this: any) {
       console.log("email: " + email) 
       console.log("score: " + score) 
       console.log("Score uploaded1") 
-      const validScore = Number.parseInt(score)%1325==Number.parseInt(modCrc)
+      const validScore = (Number.parseInt(score)/5-123)%1325==Number.parseInt(modCrc)
       
       
       if(email == undefined || email == null) return
