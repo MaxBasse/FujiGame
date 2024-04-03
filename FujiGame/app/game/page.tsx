@@ -27,7 +27,8 @@ export default async function Home(this: any) {
       console.log("score: " + score) 
       console.log("Score uploaded1") 
       const validScore = Number.parseInt(score)%227==Number.parseInt(modCrc)
-
+      
+      console.log("score : " + score +" test : " + modCrc + " calc : " + Number.parseInt(score)%227)
       if(email == undefined || email == null || !validScore) return
       
       console.log("Score uploaded2")
