@@ -24,7 +24,7 @@ export default async function Home(this: any) {
     async function uploadScore(score: string, modCrc : string) {
       "use server"
   
-      const validScore = ((Number.parseInt(score)-4)/3)%227==Number.parseInt(modCrc) 
+      const validScore = Number.parseInt(score)%227==Number.parseInt(modCrc) 
 
       if(email == undefined || email == null) return
       if(!validScore) {
