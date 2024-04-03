@@ -23,21 +23,31 @@ export default async function Home(this: any) {
 
     async function uploadScore(score: string, modCrc : string) {
       "use server"
-      console.log("email: " + email) 
-      console.log("score: " + score) 
-      console.log("Score uploaded1") 
-      const validScore = Number.parseInt(score)%227==Number.parseInt(modCrc)
+  
+      const validScore = ((Number.parseInt(score)-4)/3)%227==Number.parseInt(modCrc) 
 
-      if(email == undefined || email == null || !validScore) return
+      if(email == undefined || email == null) return
+      if(!validScore) {
+        await prisma.scores.create({
+          data: {
+            email: email,
+            score: -(Number.parseInt(score)),
+          },
+          })
+          console.log("Cheated score uploaded")
+  
+          disconnect();
+
+      }
       
-      console.log("Score uploaded2")
+      console.log("Not a cheated score")
       await prisma.scores.create({
         data: {
           email: email,
           score: Number.parseInt(score),
         },
         })
-        console.log("Score uploaded3")
+        console.log("Legit score uploaded")
 
         disconnect();
   

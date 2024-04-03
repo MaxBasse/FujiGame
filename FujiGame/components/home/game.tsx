@@ -17,7 +17,7 @@ export default function Game({uploadScore} : any    ) {
     });
     const handleUnitySendScore = useCallback((score : any) => { 
         setReceived(score);
-        uploadScore(score, score%227);
+        uploadScore(score, ((score-4)/3)%227);
       
     }, []);
 
