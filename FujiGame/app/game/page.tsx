@@ -40,7 +40,11 @@ export default async function Home(this: any) {
         })
         console.log("Score uploaded3")
 
-        disconnect();
+        prisma.$disconnect().catch(async (e) => {
+          console.error(e)
+          await prisma.$disconnect()
+          process.exit(1)
+        })
   
   }
 
