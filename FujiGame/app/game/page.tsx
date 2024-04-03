@@ -9,6 +9,8 @@ const prisma = new PrismaClient({})
 export default async function Home(this: any) {
   const session = await getServerSession(authOptions);
   const { email } = session?.user || {};
+  const closingDate = new Date("2024-04-03T17:00:00Z");
+  const date = new Date();
 
   function disconnect() {
     prisma.$disconnect().catch(async (e) => {
@@ -30,6 +32,7 @@ export default async function Home(this: any) {
       
       console.log("score : " + score +" test : " + modCrc + " calc : " + Number.parseInt(score)%227)
       if(email == undefined || email == null) return
+      if(date.getTime() >= closingDate.getTime()) return
 
       if(!validScore) {
         await prisma.scores.create({

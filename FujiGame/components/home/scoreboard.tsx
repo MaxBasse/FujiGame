@@ -7,7 +7,7 @@ export default function Scoreboard({ scores, hide }: { scores: { email: string; 
 
   if(hide) return (
     <Card title='Classement désactivé pendant la dernière heure'
-    description="Plus qu'une heure pour tenter de faire le meilleur score, le classement est désactivé pour plus de suspens !"
+    description="Plus qu'une heure pour tenter de faire le meilleur score, le classement est désactivé pour plus de suspens ! Aucun score ne sera enregistré après 19H"
     
     large={true}
     /> 

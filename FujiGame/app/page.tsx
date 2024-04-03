@@ -9,7 +9,7 @@ export default async function Home() {
   const session = await getServerSession(authOptions);
   const isLogged = session?.user?.email !== undefined && session?.user?.email !== null;
   const date = new Date();
-  const closingDate = new Date("2024-04-03T16:30:00Z");
+  const closingDate = new Date("2024-04-03T16:00:00Z");
   var hide = true;
   
 
