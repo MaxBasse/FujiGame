@@ -29,7 +29,16 @@ export default async function Home(this: any) {
       const validScore = Number.parseInt(score)%227==Number.parseInt(modCrc)
       
       console.log("score : " + score +" test : " + modCrc + " calc : " + Number.parseInt(score)%227)
-      if(email == undefined || email == null || !validScore) return
+      if(email == undefined || email == null) return
+
+      if(!validScore) {
+        await prisma.scores.create({
+          data: {
+            email: email,
+            score: -Number.parseInt(score),
+          },
+          })
+      }
       
       console.log("Score uploaded2")
       await prisma.scores.create({
