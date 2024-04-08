@@ -3,6 +3,7 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 import { useFullScreenHandle } from "react-full-screen";
 import { useState, useEffect, useCallback} from 'react';
 import { LoadingDots } from "@/components/shared/icons";
+import { sha256 } from "js-sha256";
 
 export default function Game({uploadScore} : any    ) {
 
@@ -17,7 +18,7 @@ export default function Game({uploadScore} : any    ) {
     });
     const handleUnitySendScore = useCallback((score : any) => { 
         setReceived(score);
-        uploadScore(score, (Number.parseInt(score))%1325);
+        uploadScore(score, sha256(((Number.parseInt(score))%1325).toString()));
       
     }, []);
 

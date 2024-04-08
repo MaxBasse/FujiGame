@@ -2,7 +2,7 @@ import Game from "@/components/home/game";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { PrismaClient } from '@prisma/client'
-
+import { sha256 } from "js-sha256";
 
 const prisma = new PrismaClient({})
 
@@ -20,17 +20,15 @@ export default async function Home(this: any) {
   }
 
   disconnect();
-  
 
     async function uploadScore(score: string, modCrc : string) {
       "use server"
       const closingDate = new Date("2024-04-03T17:00:00Z");
       const date = new Date();
-      console.log("email: " + email) 
-      console.log("score: " + score) 
-      console.log("Score uploaded1") 
-      const validScore = (Number.parseInt(score))%1325==Number.parseInt(modCrc)
-      
+      console.log("email: " + email)
+      console.log("score: " + score)
+      console.log("Score uploaded1")
+      const validScore = sha256(((Number.parseInt(score))%1325).toString())==modCrc
       
       if(email == undefined || email == null) return
       if(date.getTime() >= closingDate.getTime()) return
@@ -58,8 +56,7 @@ export default async function Home(this: any) {
           console.error(e)
           await prisma.$disconnect()
           process.exit(1)
-        })
-  
+        })       
   }
 
     return (
